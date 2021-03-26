@@ -13,7 +13,7 @@ Create table Carreras(
 GO
 
 Create table Materias(
-	ID bigint primary key identity (100,1),
+	ID bigint primary key identity (1,1),
 	IDcarrera varchar(4) not null foreign key references Carreras(ID),
 	Nombre varchar(30) not null,
 	Carga_horaria int not null check (Carga_horaria > 0),
@@ -21,7 +21,8 @@ Create table Materias(
 GO
 
 Create table Alumnos(
-	Legajo varchar(4) not null foreign key references Carreras(ID),
+	Legajo bigint not null PRIMARY KEY identity (1000,1),
+	IDCarrera varchar(4) not null references Carreras (ID)
 	Apellidos varchar(40) null,
 	Nombres varchar(40) null,
 	FechaNacimiento date not null check(FechaNacimiento <= getdate()),
